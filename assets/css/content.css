@@ -1,0 +1,122 @@
+/*
+ * SEVI: Sistema para la evaluación integral
+ *
+ * SEVI es una plataforma construida para facilitar la evaluación,
+ * co-evaluación, auto-evaluación y gestión básica de asignaturas
+ * que contemplan proyectos grupales semestrales.
+ *
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @copyright   2015 Mahou Ingeniería
+ * @license     http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
+ * @version     0.0.1-prototype
+ */
+
+/*
+ * Hoja de estilos
+ * Estilo de la sección de contenido
+ */
+
+.sevi-content {
+  color: #444;
+}
+
+.sevi-content .pure-table {
+  color: #777;
+}
+
+.sevi-content h2 {
+  color: #457a93;
+}
+
+.sevi-content a:link,
+.sevi-content a:hover,
+.sevi-content a:visited,
+.sevi-content a:active,
+.sevi-content a:focus {
+  color: orangered;
+}
+
+.sevi-content p {
+  margin-left: 20px;
+}
+
+.sevi-content h1,
+.sevi-content h2,
+.sevi-content h3,
+.sevi-content h4,
+.sevi-content h5,
+.sevi-content h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.sevi-content ul {
+  list-style: circle;
+}
+
+.sevi-content li {
+  margin-bottom: 5px;
+}
+
+.sevi-content .feed-time {
+  color: #999;
+}
+
+.sevi-content .breadcrumb {
+  width: 100%;
+  font-size: 12px;
+
+}
+
+.breadcrumb ul {
+  margin: 0 0 30px 0;
+  padding: 0;
+  list-style-type: none;
+  clear: both;
+}
+
+.breadcrumb li {
+  display: inline;
+}
+
+.breadcrumb li:before {
+  content: "\00BB";
+  margin-right: 5px;
+}
+
+.breadcrumb li:first-child:before {
+  content: '';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

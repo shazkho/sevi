@@ -1,0 +1,124 @@
+/*
+ * SEVI: Sistema para la evaluación integral
+ *
+ * SEVI es una plataforma construida para facilitar la evaluación,
+ * co-evaluación, auto-evaluación y gestión básica de asignaturas
+ * que contemplan proyectos grupales semestrales.
+ *
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @copyright   2015 Mahou Ingeniería
+ * @license     http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
+ * @version     0.0.1-prototype
+ */
+
+/*
+ * Hoja de estilos
+ * Cabecera global
+ */
+
+
+/* Estructura base */
+
+.header-main {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background-color: rgba(157, 219, 243, 0.23);
+}
+
+.header-separator {
+  width: 100%;
+  height: 5px;
+  background-color: #499db6;
+}
+
+
+/* Caja del logo */
+
+.logo-box {
+  float: left;
+  width: 250px;
+  height: 100%;
+}
+
+img.logo-img {
+  width: 250px;
+  height: 100px;
+}
+
+
+/* Caja del usuario */
+
+.user-box {
+  position: absolute;
+  right: 0;
+  left: 250px;
+  float: left;
+  height: 100%;
+}
+
+.user-name {
+  position: absolute;
+  left: 25px;
+  bottom: 10px;
+  font-size: 24px;
+  color: #499db6;
+}
+
+.user-controls {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 14px;
+}
+
+.user-controls ul {
+  padding: 0;
+  margin: 0 10px 0 10px;
+  list-style: none;
+}
+
+.user-controls li {
+  float: left;
+  margin: 0 0 0 15px;
+  padding: 2px 0 0;
+}
+
+.user-controls a:link,
+.user-controls a:hover,
+.user-controls a:visited,
+.user-controls a:active,
+.user-controls a:focus {
+  text-decoration: none;
+  color: #457a93;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

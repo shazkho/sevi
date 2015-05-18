@@ -1,0 +1,78 @@
+/*
+ * SEVI: Sistema para la evaluación integral
+ *
+ * SEVI es una plataforma construida para facilitar la evaluación,
+ * co-evaluación, auto-evaluación y gestión básica de asignaturas
+ * que contemplan proyectos grupales semestrales.
+ *
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @copyright   2015 Mahou Ingeniería
+ * @license     http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
+ * @version     0.0.1-prototype
+ */
+
+/*
+ * Hoja de estilos
+ * Estilo global
+ */
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: helvetica, arial, 'lucida grande', sans-serif;
+}
+
+.sevi-header {
+  width: 100%;
+}
+
+.sevi-body {
+  width: 100%;
+}
+
+.sevi-footer {
+  float: left;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.sevi-user-menu {
+  float: left;
+  width: 250px;
+}
+
+.sevi-content {
+  float: left;
+  min-height: 500px;
+  padding: 20px;
+  width: calc(100% - 300px);
+}
+
+.color-red {
+  color: #a30013;
+}
+
+.color-black {
+  color: #000;
+  font-weight: 400;
+}
+
+.footer-line {
+  display: block;
+  color: #999;
+  text-align: center;
+}
