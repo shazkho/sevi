@@ -26,12 +26,6 @@
  * @version     0.0.1-prototype
  */
 
-define('DS', '\\');
-define('BASEPATH', dirname(__FILE__).DS);
-include 'includes/page_builder.php';
-
-$page = empty($_GET['page']) ? 'home' : $_GET['page'];
-$path = empty($_GET['path']) ? '' : $_GET['path'];
-$builder = new Page_builder(BASEPATH);
-
-echo $builder->build($page, $path);
+?>
+<h1>Error 404</h1>
+<p>La página solicitada no fue encontrada en el servidor.</p>

@@ -1,0 +1,139 @@
+ -------------------------------------------------------------------
+| MAHOU Ingeniería                                                  |
+| Proyecto SEVI                                                     |
+|-------------------------------------------------------------------|
+| Instructivo para creación de vistas en el prototipo               |
+ -------------------------------------------------------------------
+
+1 ESTRUCTURA DE ARCHIVOS
+
+sevi                                // Carpeta raíz
+ |- assets                          // Carpeta con recursos visuales
+ |    |- css                        // Carpeta con hojas de estilo
+ |    |- fonts                      // Carpeta con fuentes personalizadas
+ |    |- images                     // Carpeta con imágenes
+ |    |- js                         // Carpeta con scripts JavaScript
+ |
+ |- includes                        // Carpeta con recursos de código
+ |    |- templates                  // Carpeta con plantillas HTML
+ |    |     |- base.php             // Plantilla básica
+ |    |     |- footer.php           // Plantilla del pié de página
+ |    |     |- header.php           // Plantilla del encabezado
+ |    |     |- home.php             // Plantilla del Home de usuario
+ |    |     |- user-menu.php        // Plantilla del menú de usuario
+ |    |
+ |    |- page_builder-php           // Constructor de páginas
+ |
+ |- index.php                       // Script principal (carga el constructor de páginas)
+
+
+
+2. ARRANCANDO EL PROTOTIPO
+
+    2.1 Instalar XAMPP
+    2.2 Copiar la carpeta "sevi" (que contiene el "index.php") en la carpeta "htdocs"
+        (debe quedar algo como "c:\xampp\htdocs\sevi\index.php").
+    2.3 Iniciar "Apache" en el panel de XAMPP.
+    2.4 Ir a la URL "127.0.0.1/sevi" o en su defecto "localhost/sevi"
+
+    En este punto se debería ver, sin errores, el prototipo para el Home de usuarios.
+
+
+3. LLAMANDO PÁGINAS CON PARÁMETRO (necesario para todas las páginas menos el Home de usuario)
+
+    Notar que en el punto 2 se llamó a la página sin especificar el "index.php", esto es porque
+    la vista del Home de alumno es la vista por defecto. Para llamar páginas adicionales se debe
+    especificar un parámetro en la URL.
+
+    NOTA: Si se intenta llamar a una página que aun no ha sido definida arrojará un error 404.
+
+    Estructura de la URL con parámetros:
+
+        127.0.0.1/sevi/index.php?page=home
+
+        127.0.0.1   Dirección web que apunta a la carpeta "htdocs" de xampp.
+        sevi        Indica que se accederá a la carpeta "sevi" dentro de "htdocs".
+        index.php   Llama al script base del prototipo.
+        ?page=home  Define el parámetro "page" con valor "home".
+
+    Los parámetros que se pueden definir son:
+
+        - 'page': Indica el nombre de la plantilla que se desea cargar. Por ejemplo, si se desea
+                  cargar la plantilla "grupo.php", el parámetro "page" debera ser definido con el
+                  valor "grupo".
+        - 'path': Este parámetro es optativo y sólo se utiliza si se llamará a una plantilla que
+                  se encuentre definida dentro de una carpeta, al interior de la carpeta "templates".
+                  Por ejemplo, si se tiene la plantilla "declaracion.php" dentro de la carpeta
+                  "evaluacion" (es decir, en "sevi/includes/templates/evaluacion/declaracion.php"),
+                  el parámetro "path" deberá tener valor "evaluacion" y el parámetro "page" deberá
+                  tener valor "declaración".
+
+        URL completa ejemplo 1:  127.0.0.1/sevi/index.php?page=grupo
+        URL completa ejemplo 2:  127.0.0.1/sevi/index.php?page=declaracion&path=evaluacion
+
+
+
+3. CREANDO NUEVAS VISTAS
+
+    Crear nuevas vistas es extremadamente sencillo (comparado con lo que realmente cuesta realizarlo
+    a mano) y requiere únicamente de seguir 3 sencillos pasos:
+
+    3.1 Decidir el nombre (y carpeta) de la vista que se desea construir.
+
+        Dado que se deberá generar un gran número de vistas, es muy recomendable ir organizándolas
+        en carpetas, siguiendo una estructura de "paquetes" o "módulos" (definidos como requisitos
+        del proyecto). En esta línea, si se desea crear vistas relacionadas con la evaluación de
+        alumnos, se recomienda agruparlas en una carpeta llamada "evaluacion" (sin tilde) dentro de
+        la carpeta templates (recordar el punto 2 al respecto de el parámetro "path" al llamar vistas
+        que se encuentran dentro de carpetas).
+
+    3.2 Construir la plantilla
+
+        NOTA: Aun cuando el motor de plantillas está diseñado para funcionar con tokens (comportamiento
+        normal de una plantilla), para la definición del prototipo esto no es necesario y se recomienda
+        utilizar únicamente código HTML.
+
+        Al momento de escribir el código NO SE DEBEN INCLUIR etiquetas "html", "head o "body" ya que el
+        motor de templates incluirá el código de la plantilla dentro del "body", en el lugar adecuado.
+        Aparte de esa restricción, se podrá incluir lo que se desee. A continuación, una muestra de lo
+        sencillo que puede llegar a ser el crear una plantilla, utilizando la plantilla de error 404
+        ("sevi/includes/templates/errors/404.php").
+
+        - - Archivo "404.php" (Se ha excluido el comentario de inicio) - - - - - - - - - - - - - - - -
+
+            <h1>Error 404</h1>
+            <p>La página solicitada no fue encontrada en el servidor.</p>
+
+        - - Fin del archivo - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        Si lo desean, llamen a la vista de error 404 especificando un parámetro "page" que no hayan
+        definido, o directamente utilizando "path" con valor "errors" y "page" con valor "404" y podrán
+        observad que con 2 líneas de código logran una vista completa, incluyendo el resto de los
+        elementos.
+
+    3.3 Agregando estilos
+
+        Existe una probabilidad no menor de que deseen incluir estilos visuales con hojas de estilo CSS.
+        Los archivos CSS se cargan automáticamente, pero se recomienda la no creación de archivos
+        adicionales porque se deben incluir manualmente. Para incluir estilos CSS en sus vistas, se deben
+        agregar al archivo "content.css", que se encuentra en la carpeta "sevi/assets/css".
+
+        RECOMENDACIÓN: Los estilos CSS pueden generar conflictos si se repiten los identificadores. Dado
+        esto, se recomienda utilizar selectores con nombre del tipo ".modulo-vista-selector". Es decir,
+        si deseo poner en "negrita" el texto contenido en una etiqueta "span" llamada "nombre", en la
+        plantilla "perfil" de la carpeta "usuario":
+
+            HTML:   <span class="usuario-perfil-nombre">Diego Perez</span>
+            CSS:    .usuario-perfil-nombre { font-weight: bold; }
+
+        De este modo, si en otra vista se define la el selector "nombre", no habrá conflicto.
+
+
+        MUY ÚTIL: En el motor de plantillas se incluye la librería CSS "Pure CSS". Es una librería muy
+                  útil y ligera (mucho más sencilla de utilizar que bootstrap, y menos invasiva) que la
+                  pueden usar donde deseen. Para ver como se usa y ejemplos EXTREMADAMENTE claros,
+                  visiten la página "http://purecss.io/"
+
+
+Y ESO ES!
+El archivo es largo porque traté de explicarlo bien, pero es de verdad muy sencillo.

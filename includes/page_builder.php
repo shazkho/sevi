@@ -45,6 +45,11 @@ class Page_builder
      */
     protected $basepath;
 
+    /**
+     * @var string La ruta hacia la carpeta "templates"
+     */
+    protected $templates_path;
+
 
     /* - - CONSTRUCTOR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -58,6 +63,7 @@ class Page_builder
     public function __construct($basepath)
     {
         $this->basepath = $basepath;
+        $this->templates_path = $basepath.DS.'includes'.DS.'templates'.DS;
     }
 
 
@@ -74,11 +80,11 @@ class Page_builder
      * @since 0.0.1-prototype
      * @access public
      */
-    public function build($page, $layout='base')
+    public function build($page, $path, $layout='base')
     {
         switch ($layout) {
             case 'base':
-                return $this->build_base($page);
+                return $this->build_base($page, $path);
             default:
                 return 'El layout solicitado no existe.';
         }
@@ -102,7 +108,7 @@ class Page_builder
      * @since 0.0.1-prototype
      * @access public
      */
-    public function build_base($page)
+    public function build_base($page, $path)
     {
         $strings = array(
             'title' => 'SEVI: Página de ejemplo',
@@ -115,7 +121,7 @@ class Page_builder
             )),
             'header' => $this->build_header(),
             'user-menu' => $this->build_user_menu(),
-            'body' => $this->template('content', array()),
+            'body' => $this->template($page, array(), $path),
             'footer' => $this->template('footer', array())
         );
         return $this->template('base', $strings);
@@ -157,16 +163,18 @@ class Page_builder
      * Si el template solicitado no es encontrado termina la ejecución con error.
      *
      * @param string $template El nombre del template a ser buscado.
+     * @param string $path Carpeta en la que se encuentra el template (se omite si está en la raíz).
      *
      * @return string El template en bruto (con los tokens sin reemplazar)
      *
      * @since 0.0.1-prototype
      * @access protected
      */
-    protected function get_template($template)
+    protected function get_template($template, $path='')
     {
-        $file = file_get_contents($this->basepath.'includes\\templates\\'.$template.'.php');
-        if ($file === false) exit('ERROR: El template '.$template.' no fue encontrado.');
+        if ($path) $path = $path.DS;
+        $file = @file_get_contents($this->templates_path.$path.$template.'.php');
+        if ($file === false) $file = file_get_contents($this->templates_path.'errors'.DS.'404.php');
 
         $re = "/<\\?php([\\s\\S]*)\\?>/iU";
         return preg_replace($re, '', $file);
@@ -201,9 +209,9 @@ class Page_builder
      *
      * @return string El HTML del template reemplazado con los strings entregados
      */
-    protected function template($template, $strings)
+    protected function template($template, $strings, $path='')
     {
-        $template_html = $this->get_template($template);
+        $template_html = $this->get_template($template, $path);
         foreach ($strings as $name => $value) {
             $template_html = str_replace('{'.strtoupper($name).'}', $value, $template_html);
         }
@@ -240,12 +248,12 @@ class Page_builder
     {
         $resources = array();
         foreach ($css as $res => $path) {
-            if ($path === false) $path = 'assets\\css\\';
+            if ($path === false) $path = 'assets'.DS.'css'.DS;
             array_push($resources, '<link rel="stylesheet" type="text/css" href="'.$path.$res.'.css">
             ');
         }
         foreach ($js as $res => $path) {
-            if ($path === false) $path ='assets\\js\\';
+            if ($path === false) $path ='assets'.DS.'js'.DS;
             array_push($resources, '<script type="text/javascript" src="'.$path.$res.'.js"></script>
             ');
         }
