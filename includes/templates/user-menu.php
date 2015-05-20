@@ -28,33 +28,33 @@
 ?>
 <ul class="user-menu-list">
     <li class="menu-element menu-title">Mis cursos</li>
-    <li class="menu-element menu-category course-title">
+    <li id="0" class="menu-element menu-category course-title">
         <img class="category-icon" src="assets/images/student.png">
         <span>Ingeniería de Software</span>
     </li>
     <li class="course-options">
         <ul class="course-option-list">
-            <li class="menu-element course-option">
+            <li id="1" class="menu-element course-option">
                 <img class="option-icon" src="assets/images/home.png">Inicio</li>
-            <li class="menu-element course-option">
+            <li id="2" class="menu-element course-option">
                 <img class="option-icon" src="assets/images/edit.png">Co-Evaluación</li>
-            <li class="menu-element course-option">
+            <li id="3" class="menu-element course-option">
                 <img class="option-icon" src="assets/images/grade.png">Calificaciones</li>
-            <li class="menu-element course-option">
+            <li id="4" class="menu-element course-option">
                 <img class="option-icon" src="assets/images/upload.png">Entregas</li>
-            <li class="menu-element course-option">
+            <li id="5" class="menu-element course-option">
                 <img class="option-icon" src="assets/images/list.png">Contenidos</li>
-            <li class="menu-element course-option">
+            <li id="6" class="menu-element course-option">
                 <img class="option-icon" src="assets/images/folder.png">Archivos</li>
-            <li class="menu-element course-option">
+            <li id="7" class="menu-element course-option">
                 <img class="option-icon" src="assets/images/group.png">Grupo</li>
         </ul>
     </li>
     <li class="menu-element menu-title">Configuración</li>
-    <li class="menu-element menu-category ">
+    <li id="8" class="menu-element menu-category ">
         <img class="category-icon" src="assets/images/profile.png">Perfil</li>
-    <li class="menu-element menu-category ">
+    <li id="9" class="menu-element menu-category ">
         <img class="category-icon" src="assets/images/lock.png">Contraseña</li>
-    <li class="menu-element menu-category ">
+    <li id="10" class="menu-element menu-category ">
         <img class="category-icon" src="assets/images/clock.png">Alertas</li>
 </ul>

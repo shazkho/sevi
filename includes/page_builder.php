@@ -112,13 +112,19 @@ class Page_builder
     {
         $strings = array(
             'title' => 'SEVI: Página de ejemplo',
-            'resources' => $this->resources(array(
-                'pure-min' => false,
-                'global' => false,
-                'header' => false,
-                'user-menu' => false,
-                'content' => false
-            )),
+            'resources' => $this->resources(
+                array(
+                    'pure-min' => false,
+                    'global' => false,
+                    'header' => false,
+                    'user-menu' => false,
+                    'content' => false
+                ),
+                array(
+                    'jquery-1.11.3.min' => false,
+                    'user-menu' => false
+                )
+            ),
             'header' => $this->build_header(),
             'user-menu' => $this->build_user_menu(),
             'body' => $this->template($page, array(), $path),
